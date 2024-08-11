@@ -1,0 +1,27 @@
+name: test
+
+on:
+  push:
+    branches: [ main, test]  # Cambia a la rama en la que quieras ejecutar las pruebas
+  pull_request:
+    branches:
+      - main  # Cambia a la rama en la que quieras ejecutar las pruebas
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}  # Cambia a la versión de Node.js que estés usando
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm run test
