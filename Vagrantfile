@@ -19,7 +19,4 @@ class VagrantPlugins::ProviderVirtualBox::Action::Network
       end
 
     end
-  
-    config.vm.synced_folder "./html/", "/vagrant/index.html", type: "virtualbox"
-  
   end

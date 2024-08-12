@@ -18,7 +18,7 @@
     
     - name: Copiar archivos HTML al directorio de Apache
       synchronize:
-        src: html/
+        src: ./index.html
         dest: /var/www/html/
         recursive: yes
         mode: push
