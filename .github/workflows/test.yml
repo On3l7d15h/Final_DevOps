@@ -4,8 +4,7 @@ on:
   push:
     branches: [ main, test ]  # Cambia a la rama en la que quieras ejecutar las pruebas
   pull_request:
-    branches:
-      - main  # Cambia a la rama en la que quieras ejecutar las pruebas
+    branches: [main, test]  # Cambia a la rama en la que quieras ejecutar las pruebas
 
 jobs:
   build:
