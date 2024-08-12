@@ -4,7 +4,7 @@ const { JSDOM } = require('jsdom');
 
 test('HTML structure', () => {
     // Cargar el archivo HTML
-    const html = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf8');
+    const html = fs.readFileSync(path.resolve(__dirname, 'html/index.html'), 'utf8');
     
     // Crear una instancia de JSDOM
     const dom = new JSDOM(html);
