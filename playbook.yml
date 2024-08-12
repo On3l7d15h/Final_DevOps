@@ -1,0 +1,36 @@
+---
+- name: Configurar Apache en el servidor
+  hosts: web  # Asegúrate de que 'web' coincide con el grupo definido en tu inventario
+  become: yes  # Utiliza 'become' para ejecutar comandos como sudo
+  
+  tasks:
+    - name: Instalar Apache
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+    
+    - name: Asegurarse de que el servicio de Apache esté en ejecución
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+    
+    - name: Copiar archivos HTML al directorio de Apache
+      synchronize:
+        src: html/
+        dest: /var/www/html/
+        recursive: yes
+        mode: push
+    
+    
+    - name: Verificar que la página está disponible
+      uri:
+        url: http://localhost
+        method: GET
+        return_content: yes
+      register: result
+    
+    - name: Mostrar el contenido de la página para verificar
+      debug:
+        msg: "{{ result.content }}"
