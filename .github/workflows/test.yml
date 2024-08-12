@@ -2,7 +2,7 @@ name: test
 
 on:
   push:
-    branches: [ main, test]  # Cambia a la rama en la que quieras ejecutar las pruebas
+    branches: [ main, test ]  # Cambia a la rama en la que quieras ejecutar las pruebas
   pull_request:
     branches:
       - main  # Cambia a la rama en la que quieras ejecutar las pruebas
@@ -25,6 +25,9 @@ jobs:
 
     - name: Run tests
       run: npm run test
+
+    - name: Setup Pages
+      uses: actions/setup-pages@v3
 
     - name: Build and Deploy
       run: |
